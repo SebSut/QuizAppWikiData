@@ -1,0 +1,20 @@
+#Schauspieler
+
+SELECT ?human ?humanLabel ?birthdate ?birthdateLabel ?gender ?genderLabel ?filmography ?filmographyLabel
+WHERE {
+
+  
+  ?human wdt:P31 wd:Q5 ; 
+         wdt:P106 wd:Q33999 .
+  
+?human wdt:P1283 ?filmography ; 
+wdt:P569 ?birthdate ;
+wdt:P21 ?gender ;
+
+
+SERVICE wikibase:label {
+		bd:serviceParam wikibase:language "de" }
+  }
+  
+ORDER BY ?human
+LIMIT 100
