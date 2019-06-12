@@ -1,0 +1,29 @@
+#Filme
+SELECT ?film ?filmLabel ?directorLabel ?genre_label ?series_label ?publicationDate ?country_of_origin_label ?based_on ?based_on_label ?duration ?horror_film
+WHERE
+{
+?film wdt:P31 wd:Q11424 .
+?film wdt:P50 ?director .
+?film wdt:P2047 ?duration . 
+?film wdt:P495 ?country_of_origin .
+?country_of_origin rdfs:label ?country_of_origin_label filter (lang(?country_of_origin_label) = "en").
+OPTIONAL {
+?film wdt:P136 ?genre .
+?genre rdfs:label ?genre_label filter (lang(?genre_label) = "en").
+}
+#OPTIONAL {
+#?film wdt:P144 ?based_on .
+#?based_on rdfs:label ?based_on_label filter (lang(?based_on_label) = "en").
+#}
+#OPTIONAL {
+#?film wdt:P179 ?series .
+#?series rdfs:label ?series_label filter (lang(?series_label) = "en").
+#}
+OPTIONAL {
+?film wdt:P577 ?publicationDate .
+}
+SERVICE wikibase:label {
+bd:serviceParam wikibase:language "en" .
+}
+}
+Limit 100
